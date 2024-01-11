@@ -2,7 +2,7 @@ let users = [];
 let selectedUser = null;
 
 function generateHTML(user) {
-  return `<div class="individual_user_input_container"><span>${user}</span><input id="${user}-contributions" type="number"></input> <input id="${user}-expenses" type="number"></input></div>`;
+  return `<div class="individual_user_input_container"><span>${user} <span class="close_icon" onclick="removeUser('${user}')">X</span></span><input id="${user}-contributions" type="number"></input> <input id="${user}-expenses" type="number"></input></div>`;
 }
 
 function generateResultsHTML(user, amount) {
@@ -29,12 +29,14 @@ function generateResults() {
   );
   let resultsHTML = [];
   users.forEach((user) => {
-    let expenses = document.getElementById(`${user}-expenses`);
-    let contributions = document.getElementById(`${user}-contribution`);
+    let expensesElement = document.getElementById(`${user}-expenses`);
+    let contributionsElement = document.getElementById(`${user}-contributions`);
+    const expenses = expensesElement?.value;
+    const contributions = contributionsElement?.value;
     resultsHTML.push(
       generateResultsHTML(
         user,
-        Number(contributions?.value || 0) - Number(expenses?.value || 0)
+        Number(contributions || 0) - Number(expenses || 0)
       )
     );
   });
@@ -48,7 +50,14 @@ function clearResults() {
 
 function addNewUser() {
   let selectElement = document.getElementById("addUser");
+  if (!selectElement.value) return;
   users.push(selectElement.value);
+  initializeIndividualUserData();
+  selectElement.value = "";
+}
+
+function removeUser(user) {
+  users = users.filter((x) => x !== user);
   initializeIndividualUserData();
 }
 

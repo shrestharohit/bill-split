@@ -59,7 +59,19 @@ header {
   justify-content: space-between;
   margin-top: 1rem;
 
-  div, span, input {
-    width: 200px
+  div,
+  span,
+  input {
+    width: 200px;
   }
+
+  span:last-child {
+    text-align: right
+  }
+}
+
+.close_icon {
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
 }
