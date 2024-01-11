@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="index.js"></script>
+    <title>Bill Split</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Bills Split</h1>
+        <h3 class="hide-in-mobile-view">
+          Split your bills more convieniently.
+        </h3>
+      </div>
+    </header>
+    <div class="container">
+      <div>
+        <div>Individual Contributions and Expenses</div>
+        <div class="individual_user_input_container">
+          <div>Users</div>
+          <div>Contributions</div>
+          <div>Expenses</div>
+        </div>
+        <div id="individualUserData"></div>
+        <button onclick="addNewUser()">Add New User</button>
+        <input id="addUser" type="text" />
+      </div>
+
+      <div>
+        <div>Results</div>
+        <button onclick="generateResults()">Generate</button>
+        <button onclick="clearResults()">Clear</button>
+
+        <div>Total Expenses <span id="totalExpenses">N/A</span></div>
+        <div>
+          Users Net
+          <div id="individualUsersFinalAmount"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
